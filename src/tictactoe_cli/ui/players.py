@@ -6,24 +6,19 @@ from typing import TYPE_CHECKING
 
 from rich.console import Console
 from rich.prompt import Prompt
-from tic_tac_toe_3x3.game.players import Player  # type: ignore[import-untyped]
+from tic_tac_toe_3x3.game.players import Player
 
 from tictactoe_cli.ui.input import parse_coordinate
 
 if TYPE_CHECKING:
-    from tic_tac_toe_3x3.logic.models import GameState, Move
+    from tic_tac_toe_3x3.logic.models import GameState, Mark, Move
 
 
 class HumanPlayer(Player):  # type: ignore[misc]
     """A human player that reads moves from terminal input."""
 
-    def __init__(
-        self,
-        *args: object,
-        console: Console | None = None,
-        **kwargs: object,
-    ) -> None:
-        super().__init__(*args, **kwargs)  # type: ignore[arg-type]
+    def __init__(self, mark: Mark, *, console: Console | None = None) -> None:
+        super().__init__(mark)
         self._console = console or Console()
 
     def get_move(self, game_state: GameState) -> Move | None:

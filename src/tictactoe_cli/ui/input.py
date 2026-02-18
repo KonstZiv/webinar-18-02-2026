@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+_BOARD_SIZE = 3
 _COL_MAP: dict[str, int] = {"a": 0, "b": 1, "c": 2}
 _VALID_ROWS: set[str] = {"1", "2", "3"}
 
@@ -32,4 +33,4 @@ def parse_coordinate(raw: str) -> int:
         msg = f"Invalid row {raw[1]!r}, expected 1/2/3"
         raise ValueError(msg)
 
-    return (int(row_char) - 1) * 3 + _COL_MAP[col_char]
+    return (int(row_char) - 1) * _BOARD_SIZE + _COL_MAP[col_char]
