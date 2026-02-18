@@ -49,7 +49,10 @@ def get_symbol(mark: Mark) -> list[str]:
     """
     if mark is Mark.CROSS:
         return list(X_SYMBOL)
-    return list(O_SYMBOL)
+    if mark is Mark.NAUGHT:
+        return list(O_SYMBOL)
+    msg = f"Unknown mark: {mark}"
+    raise ValueError(msg)
 
 
 def get_empty_cell() -> list[str]:
