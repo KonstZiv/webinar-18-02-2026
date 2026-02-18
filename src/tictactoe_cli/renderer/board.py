@@ -28,7 +28,7 @@ _MARK_STYLE: dict[str, str] = {
 }
 
 
-class RichRenderer(Renderer):
+class RichRenderer(Renderer):  # type: ignore[misc]
     """Render the game board to the terminal using Rich."""
 
     def __init__(self, *, console: Console | None = None) -> None:
